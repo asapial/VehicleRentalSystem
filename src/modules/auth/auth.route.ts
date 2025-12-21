@@ -6,6 +6,8 @@ const route= Router();
 
 route.post("/signup",authController.signup);
 
+route.post("/signin",authController.signIn);
+
 
 
 
