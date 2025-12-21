@@ -44,7 +44,8 @@ export const connectDB = async () => {
             rent_end_date DATE NOT NULL,
             total_price NUMERIC(10, 2) NOT NULL CHECK (total_price > 0),
             status VARCHAR(10) NOT NULL CHECK (status IN ('active', 'cancelled', 'returned')),
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT chk_rent_dates CHECK (rent_end_date > rent_start_date)
         )`)
 
     }
