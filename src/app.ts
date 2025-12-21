@@ -3,6 +3,7 @@ import express from 'express';
 import { connectDB } from './config/db';
 import { usersRoute } from './modules/users/users.route.';
 import { authRoute } from './modules/auth/auth.route';
+import { vehicleRoute } from './modules/vehicles/vehicles.route';
 const app = express();
 
 app.use(express.json());
@@ -14,6 +15,8 @@ connectDB();
 app.use("/users", usersRoute);
 
 app.use("/auth", authRoute);
+
+app.use("/vehicles", vehicleRoute);
 
 app.get('/', (req, res) => {
   res.send('Hello 🚗 Vehicle Rental System');

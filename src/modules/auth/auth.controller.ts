@@ -1,7 +1,7 @@
 import express from 'express';
 import { authService } from './auth.services';
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import config from '../../config';
 
 const signup = async (req: express.Request, res: express.Response) => {
@@ -53,7 +53,7 @@ const signIn = async (req: express.Request, res: express.Response) => {
             })
         }
 
-        const jwtToken = jwt.sign(
+        const jwtToken  = jwt.sign(
             { id: result.rows[0].id, email: result.rows[0].email, role: result.rows[0].role },
             config.jwtSecret!,
             {
@@ -61,7 +61,11 @@ const signIn = async (req: express.Request, res: express.Response) => {
             });
 
         const { password: _, created_at, ...returnedUser } = result.rows[0];
+        
+        // req.user=jwtToken;
+        req.user = jwt.verify(jwtToken, config.jwtSecret!) as JwtPayload;
 
+        console.log(req.user);
 
         res.status(200).json({
             success: true,

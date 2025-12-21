@@ -9,20 +9,22 @@ const authMiddleware=()=>{
 
         const authorizationToken= req.headers.authorization?.split(" ")[1];
 
-        if(!authorizationToken){
-            return res.status(401).json({
-                success:false,
-                message:"No token provided"
-            });
-        }
+        // if(!authorizationToken){
+        //     return res.status(401).json({
+        //         success:false,
+        //         message:"No token provided"
+        //     });
+        // }
 
         
         // const decoded = jwt.verify(authorizationToken, config.jwtSecret!);
         // req.user = decoded;
 
-        // console.log("reqUser:", req.user);
+        console.log("reqUser:", req.user);
 
         next();
 
     }
 }
+
+export const auth=authMiddleware;
