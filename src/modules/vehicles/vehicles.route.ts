@@ -5,11 +5,14 @@ import { auth } from "../../middleware/auth";
 const route=Router();
 
 
-route.post("/",vehicleController.createVehicle);
+route.post("/",auth("admin"),vehicleController.createVehicle);
 
-route.get("/",auth(),vehicleController.getAllVehicle);
+route.get("/",vehicleController.getAllVehicle);
 
 route.get("/:id",vehicleController.getVehicleByID);
+
+route.put("/:id",auth("admin"),vehicleController.updateVehicleByID);
+
 
 
 

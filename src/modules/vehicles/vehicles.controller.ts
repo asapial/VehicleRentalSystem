@@ -76,9 +76,38 @@ const getVehicleByID = async (req: express.Request, res: express.Response) => {
     }
 }
 
+const updateVehicleByID = async (req: express.Request, res: express.Response) => {
+
+ 
+    try {
+        const result = await vehicleServices.updateVehicleByIDQuery(req);
+
+
+        if (result.rows.length === 0) {
+            return res.status(200).json(
+                {
+                    "success": true,
+                    "message": "No vehicles found",
+                    "data": []
+                }
+            )
+        }
+        res.status(201).json({
+            success: true,
+            message: "Vehicle updated  successfully",
+            data: result.rows
+        });
+    } catch (err: any) {
+        res.status(500).json({
+            success: false,
+            message: err.message
+        })
+    }
+}
 
 export const vehicleController = {
     createVehicle,
     getAllVehicle,
-    getVehicleByID
+    getVehicleByID,
+    updateVehicleByID
 }
