@@ -38,9 +38,19 @@ const updateVehicleByIDQuery = async (req:express.Request)=>{
 }
 
 
+const deleteVehicleByIDQuery = async (req:express.Request)=>{
+
+    const id : any=req.params.id;
+
+    const result= await pool.query(`DELETE FROM vehicles WHERE id = $1`, [id]);
+
+    return result;
+}
+
 export const vehicleServices={
     createVehicleQuery,
     getAllVehicleQuery,
     getVehicleByIDQuery,
-    updateVehicleByIDQuery
+    updateVehicleByIDQuery,
+    deleteVehicleByIDQuery
 }

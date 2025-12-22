@@ -49,7 +49,7 @@ const getAllVehicle = async (req: express.Request, res: express.Response) => {
 
 const getVehicleByID = async (req: express.Request, res: express.Response) => {
 
- 
+
     try {
         const result = await vehicleServices.getVehicleByIDQuery(req);
 
@@ -78,7 +78,7 @@ const getVehicleByID = async (req: express.Request, res: express.Response) => {
 
 const updateVehicleByID = async (req: express.Request, res: express.Response) => {
 
- 
+
     try {
         const result = await vehicleServices.updateVehicleByIDQuery(req);
 
@@ -105,9 +105,35 @@ const updateVehicleByID = async (req: express.Request, res: express.Response) =>
     }
 }
 
+
+const deleteVehicleByID = async (req: express.Request, res: express.Response) => {
+    try {
+        const result = await vehicleServices.deleteVehicleByIDQuery(req);
+
+        if (result.rowCount === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "Vehicle not found"
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Vehicle deleted successfully"
+        });
+
+    } catch (err: any) {
+        return res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
+};
+
 export const vehicleController = {
     createVehicle,
     getAllVehicle,
     getVehicleByID,
-    updateVehicleByID
+    updateVehicleByID,
+    deleteVehicleByID
 }

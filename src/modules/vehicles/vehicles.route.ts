@@ -13,6 +13,8 @@ route.get("/:id",vehicleController.getVehicleByID);
 
 route.put("/:id",auth("admin"),vehicleController.updateVehicleByID);
 
+route.delete("/:id",auth("admin"),vehicleController.deleteVehicleByID);
+
 
 
 
