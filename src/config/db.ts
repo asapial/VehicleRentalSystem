@@ -33,11 +33,11 @@ export const connectDB = async () => {
         )
         `)
 
-    
+
     await pool.query(`
         CREATE TABLE IF NOT EXISTS bookings(
         
-                    id SERIAL PRIMARY KEY,
+            id SERIAL PRIMARY KEY,
             customer_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
             vehicle_id INTEGER REFERENCES vehicles(id) ON DELETE CASCADE,
             rent_start_date DATE NOT NULL,
@@ -48,4 +48,4 @@ export const connectDB = async () => {
             CONSTRAINT chk_rent_dates CHECK (rent_end_date > rent_start_date)
         )`)
 
-    }
+}

@@ -38,6 +38,9 @@ const updateUserById = async (req: express.Request, res: express.Response) => {
         const tokenUser: any = req.user;
 
 
+        console.log(tokenUser);
+
+
 
         if (req.body.role === "customer" && tokenUser.id != req.body.id) {
             return res.status(403).json({
