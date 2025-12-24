@@ -1,6 +1,7 @@
 import express from "express";
 
 import { bookingServices } from "./booking.services";
+import { autoReturnBookings } from "../../services/autoReturn.service";
 
 
 
@@ -141,6 +142,23 @@ const updateBookings = async (req: express.Request, res: express.Response) => {
 };
 
 
+const runAutoReturnManually = async (req: express.Request, res: express.Response) => {
+    try {
+        await autoReturnBookings();
+
+        res.status(200).json({
+            success: true,
+            message: "Auto-return executed successfully"
+        });
+    } catch (err: any) {
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
+};
+
+
 
 
 
@@ -148,5 +166,6 @@ const updateBookings = async (req: express.Request, res: express.Response) => {
 export const bookingControllers = {
     createBooking,
     getAllBookings,
-    updateBookings
+    updateBookings,
+    runAutoReturnManually
 }

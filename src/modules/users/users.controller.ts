@@ -135,6 +135,10 @@ const deleteUserById = async (req: express.Request, res: express.Response) => {
 };
 
 
+
+
+
+
 export const usersControllers = {
     getAllUsers,
     updateUserById,
