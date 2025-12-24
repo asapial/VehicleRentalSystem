@@ -27,6 +27,15 @@ const deleteUserByIDQuery = async (req:express.Request)=>{
     return result;
 }
 
+const checkUserWithActiveBookings= async (id:any) => {
+    
+    const result = await pool.query(`
+        SELECT * FROM   bookings WHERE customer_id=$1
+        `,[id]);
+
+    return result;
+}
+
 
 
 
@@ -34,5 +43,6 @@ const deleteUserByIDQuery = async (req:express.Request)=>{
 export const userServices = {
     getAllUsersQuery,
     updateUserByIdQuery,
-    deleteUserByIDQuery
+    deleteUserByIDQuery,
+    checkUserWithActiveBookings
 }

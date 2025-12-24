@@ -47,10 +47,20 @@ const deleteVehicleByIDQuery = async (req:express.Request)=>{
     return result;
 }
 
+const checkVehiclesWithActiveBookings= async (id:any) => {
+    
+    const result = await pool.query(`
+        SELECT * FROM   bookings WHERE vehicle_id=$1
+        `,[id]);
+
+    return result;
+}
+
 export const vehicleServices={
     createVehicleQuery,
     getAllVehicleQuery,
     getVehicleByIDQuery,
     updateVehicleByIDQuery,
-    deleteVehicleByIDQuery
+    deleteVehicleByIDQuery,
+    checkVehiclesWithActiveBookings
 }

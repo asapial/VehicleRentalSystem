@@ -95,7 +95,17 @@ const updateUserById = async (req: express.Request, res: express.Response) => {
 const deleteUserById = async (req: express.Request, res: express.Response) => {
 
 
+    if ((await userServices.checkUserWithActiveBookings(req.params.id)).rows.length !== 0) {
+        return res.status(403).json({
+            success: false,
+            message: "Cannot delete the user",
+            errors: "User have an active bookings"
+        });
+    }
+
     try {
+
+
         const result = await userServices.deleteUserByIDQuery(req);
 
         // 404 – Not Found: user does not exist

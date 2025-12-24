@@ -121,6 +121,14 @@ const updateVehicleByID = async (req: express.Request, res: express.Response) =>
 const deleteVehicleByID = async (req: express.Request, res: express.Response) => {
 
 
+        if ((await vehicleServices.checkVehiclesWithActiveBookings(req.params.id)).rows.length !== 0) {
+            return res.status(403).json({
+                success: false,
+                message: "Cannot delete the vehicle",
+                errors: "Vehicle have an active bookings"
+            });
+        }
+
     try {
         const result = await vehicleServices.deleteVehicleByIDQuery(req);
 

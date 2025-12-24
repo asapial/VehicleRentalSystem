@@ -88,6 +88,8 @@ const getAllBookingsForAdminQuery = async () => {
   `
     );
 
+    console.log(vehicleRes.rows)
+
     const returnedData: any = [];
 
     vehicleRes.rows.map((bookingInformation) => {
@@ -111,6 +113,7 @@ const getAllBookingsForAdminQuery = async () => {
         })
     })
 
+    console.log("Returneed Data: ", returnedData);
 
     return returnedData;
 };
@@ -176,7 +179,7 @@ const updateBookingsForAdminQuery = async (req: express.Request) => {
         `, [id]
     )
 
-        await pool.query(
+    await pool.query(
         `
         UPDATE vehicles
         SET availability_status = 'available'
@@ -225,7 +228,7 @@ const updateBookingsForCustomerQuery = async (req: express.Request) => {
         `, [id]
     )
 
-        await pool.query(
+    await pool.query(
         `
         UPDATE vehicles
         SET availability_status = 'available'
