@@ -1,12 +1,13 @@
 import { Router } from "express";
 import { authController } from "./auth.controller";
+import { autoReturn } from "../../middleware/autoReturn";
 
 const route= Router();
 
 
-route.post("/signup",authController.signup);
+route.post("/signup",autoReturn,authController.signup);
 
-route.post("/signin",authController.signIn);
+route.post("/signin",autoReturn,authController.signIn);
 
 
 

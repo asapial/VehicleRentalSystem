@@ -1,19 +1,20 @@
 import { Router } from "express";
 import { vehicleController } from "./vehicles.controller";
 import { auth } from "../../middleware/auth";
+import { autoReturn } from "../../middleware/autoReturn";
 
 const route=Router();
 
 
-route.post("/",auth("admin"),vehicleController.createVehicle);
+route.post("/",autoReturn,auth("admin"),vehicleController.createVehicle);
 
-route.get("/",vehicleController.getAllVehicle);
+route.get("/",autoReturn,vehicleController.getAllVehicle);
 
-route.get("/:id",vehicleController.getVehicleByID);
+route.get("/:id",autoReturn,vehicleController.getVehicleByID);
 
-route.put("/:id",auth("admin"),vehicleController.updateVehicleByID);
+route.put("/:id",autoReturn,auth("admin"),vehicleController.updateVehicleByID);
 
-route.delete("/:id",auth("admin"),vehicleController.deleteVehicleByID);
+route.delete("/:id",autoReturn,auth("admin"),vehicleController.deleteVehicleByID);
 
 
 
