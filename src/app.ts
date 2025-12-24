@@ -15,7 +15,7 @@ connectDB();
 // Routes would go here
 app.use("/users", usersRoute);
 
-app.use("/auth", authRoute);
+app.use("/api/v1/auth", authRoute);
 
 app.use("/vehicles", vehicleRoute);
 
