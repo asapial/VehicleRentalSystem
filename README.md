@@ -1,4 +1,4 @@
-# Module14 — Booking Service (NextLevel)
+# 🚗 Vehicle Rental System
 
 A lightweight backend for vehicle bookings built with Node.js, TypeScript, and Express. It provides user authentication, vehicle management, booking operations, and a scheduled job to auto-return expired bookings.
 
@@ -86,13 +86,6 @@ This project is provided as-is. Add a license file if you intend to open-source 
 
 ---
 
-If you'd like, I can also:
-
-- Add example API usage (endpoints & payloads)
-- Add a Postman collection or Swagger/OpenAPI spec
-- Create a `.env.example` file
-
-Files updated: [README.md](README.md)
 
 ## API Reference
 
