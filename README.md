@@ -75,16 +75,7 @@ The config is loaded from `.env` and the keys are referenced in `src/config/inde
 
 The project uses PostgreSQL. On startup the application will attempt to create the tables used by the app (see `src/config/db.ts`). Ensure the `connectionString` points to a reachable database with appropriate credentials.
 
-## Contributing
 
-- Fork the repo and create a feature branch.
-- Open a pull request with a clear description of the change.
-
-## License
-
-This project is provided as-is. Add a license file if you intend to open-source it.
-
----
 
 
 ## API Reference
@@ -279,7 +270,14 @@ Standard error:
 - `404` — Not Found (resource missing)
 - `500` — Internal Server Error
 
----
 
-If you want, I can format these as an OpenAPI (Swagger) spec or add example cURL/Postman requests for each endpoint.
+
+## Contributing
+
+- Fork the repo and create a feature branch.
+- Open a pull request with a clear description of the change.
+
+
+
+---
 
