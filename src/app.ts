@@ -13,13 +13,13 @@ app.use(express.json());
 connectDB();
 
 // Routes would go here
-app.use("/users", usersRoute);
+app.use("/api/v1/users", usersRoute);
 
 app.use("/api/v1/auth", authRoute);
 
-app.use("/vehicles", vehicleRoute);
+app.use("/api/v1/vehicles", vehicleRoute);
 
-app.use("/booking", bookingRoute);
+app.use("/api/v1/booking", bookingRoute);
 
 app.get('/', (req, res) => {
   res.send('Hello 🚗 Vehicle Rental System');
