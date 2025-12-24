@@ -16,7 +16,7 @@ A lightweight backend for vehicle bookings built with Node.js, TypeScript, and E
 - Express
 - PostgreSQL (`pg`)
 - JWT for auth
-- `cron` for scheduled jobs
+
 
 ## Quick Start
 
